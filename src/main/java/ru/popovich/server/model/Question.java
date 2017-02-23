@@ -1,15 +1,23 @@
 package ru.popovich.server.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Date;
 import java.util.List;
 
+@XmlRootElement
 public class Question {
     private int id;
-    private String name;
-    private List<String> options;
+    private String text;
+    private List<Option> options;
+    private Date startTime;
+    private Date stopTime;
+    private byte result;
 
-    public Question(int id, String name, List<String> options) {
+    public Question(){}
+
+    public Question(int id, String text, List<Option> options) {
         this.id=id;
-        this.name = name;
+        this.text = text;
         this.options = options;
     }
 
@@ -21,19 +29,43 @@ public class Question {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public List<String> getOptions() {
+    public List<Option> getOptions() {
         return options;
     }
 
-    public void setOptions(List<String> options) {
+    public void setOptions(List<Option> options) {
         this.options = options;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getStopTime() {
+        return stopTime;
+    }
+
+    public void setStopTime(Date stopTime) {
+        this.stopTime = stopTime;
+    }
+
+    public byte getResult() {
+        return result;
+    }
+
+    public void setResult(byte result) {
+        this.result = result;
     }
 }

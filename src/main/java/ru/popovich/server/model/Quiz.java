@@ -1,11 +1,20 @@
 package ru.popovich.server.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Date;
 import java.util.List;
 
+@XmlRootElement
 public class Quiz {
     private int id;
     private String name;
     private List<Question> questions;
+    private Date startTime;
+    private Date stopTime;
+    private byte result;
+
+    public Quiz(){
+    }
 
     public Quiz(String name, List<Question> questions) {
         this.name = name;
@@ -34,5 +43,29 @@ public class Quiz {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getStopTime() {
+        return stopTime;
+    }
+
+    public void setStopTime(Date stopTime) {
+        this.stopTime = stopTime;
+    }
+
+    public byte getResult() {
+        return result;
+    }
+
+    public void setResult(byte result) {
+        this.result = result;
     }
 }

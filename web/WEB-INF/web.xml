@@ -5,10 +5,19 @@
          version="3.1">
 
     <welcome-file-list>
-        <welcome-file>/web/index.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>StartServlet</servlet-name>
+        <servlet-class>ru.popovich.server.controller.StartQuizController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StartServlet</servlet-name>
+        <url-pattern>/start</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>MyServlet</servlet-name>
         <servlet-class>ru.popovich.server.MainServlet</servlet-class>
@@ -26,5 +35,6 @@
         <servlet-name>QuizController</servlet-name>
         <url-pattern>/quiz</url-pattern>
     </servlet-mapping>
+    
 
 </web-app>
