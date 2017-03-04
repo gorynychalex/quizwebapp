@@ -11,7 +11,7 @@ public class Question {
     private List<Option> options;
     private Date startTime;
     private Date stopTime;
-    private byte result;
+    private byte result=0;
 
     public Question(){}
 
@@ -62,6 +62,18 @@ public class Question {
     }
 
     public byte getResult() {
+
+        //mark = КВП/ОКП/(КВН + 1)
+        int sumOptionsTrue=0,sumAnsTrue=0,sunAnsFalse=0;
+        for(int i = 0; i < options.size(); i++) {
+            if(options.get(i).isCorrect()) sumOptionsTrue++;
+            if(options.get(i).isCorrect() & options.get(i).isUserAnswer()) sumAnsTrue++;
+            if( (options.get(i).isCorrect() ^ options.get(i).isUserAnswer()) & !options.get(i).isUserAnswer()) {sunAnsFalse++; }
+        }
+
+        float markFloat = (float)sumAnsTrue/(float)sumOptionsTrue/((float)sunAnsFalse+1);
+        result = (byte) (markFloat*100);
+
         return result;
     }
 

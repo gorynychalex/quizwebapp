@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+
 public class StartQuizController extends HttpServlet {
 
     public static final String[] quizNames = {"Java", "Android", "Database", "Patterns"};

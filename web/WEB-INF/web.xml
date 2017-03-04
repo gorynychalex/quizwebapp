@@ -26,7 +26,7 @@
         <servlet-name>MyServlet</servlet-name>
         <url-pattern>/servlets</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>QuizController</servlet-name>
         <servlet-class>ru.popovich.server.controller.QuizController</servlet-class>
@@ -35,6 +35,19 @@
         <servlet-name>QuizController</servlet-name>
         <url-pattern>/quiz</url-pattern>
     </servlet-mapping>
-    
+
+    <servlet>
+        <display-name>My JAX-RS Servlet</display-name>
+        <servlet-name>MyJaxRsApp</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <!--<init-param>-->
+            <!--<param-name>javax.ws.rs.Application</param-name>-->
+            <!--<param-value>ru.popovich.server.controller.ApplicationRest1</param-value>-->
+        <!--</init-param>-->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyJaxRsApp</servlet-name>
+        <url-pattern>/jaxrs/*</url-pattern>
+    </servlet-mapping>
 
 </web-app>

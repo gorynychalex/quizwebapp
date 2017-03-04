@@ -88,22 +88,41 @@ public class QuizController extends HttpServlet {
         doPost(req,resp);
     }
 
-
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
 
+
+        // Запись результата при его наличии
+        if(req.getParameter("option") != null){
+            quiz.getQuestions()
+                    .get(questionIdcurrent)
+                    .getOptions()
+                    .get(Integer.parseInt(req.getParameter("option")))
+                    .setUserAnswer(true);
+        }
+
+        if(req.getParameter("action").equals("finishQuiz")){
+            int[] resultInt = new int[quiz.getQuestions().size()];
+            for (int i = 0; i < quiz.getQuestions().size(); i++) {
+                resultInt[i]=(int) quiz.getQuestions().get(i).getResult();
+            }
+            session.setAttribute("result",resultInt);
+            req.getRequestDispatcher("/web/result.jsp").forward(req,resp);
+        }
+
         //Если questionId передан, то назначаеться переменная состояния
         if(req.getParameter("questionId") != null){
+
             if(req.getParameter("action") != null ) {
                 //Если нажата кнопка Next, Prev
                 if (req.getParameter("action").equals("nextQuestionButton")) {
                     ++questionIdcurrent;
                 } else if (req.getParameter("action").equals("prevQuestionButton")) {
                     --questionIdcurrent;
-                } else {
+                }
+                else {
                     questionIdcurrent = Integer.parseInt(req.getParameter("questionId"));
                 }
             }

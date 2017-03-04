@@ -9,6 +9,8 @@ public class Option {
     private boolean correct;
     private boolean userAnswer;
 
+    public Option(){}
+
     public Option(String text, boolean correct) {
         this.text = text;
         this.correct = correct;
